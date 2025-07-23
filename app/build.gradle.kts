@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize")
+    kotlin("kapt")
 }
 
 android {
@@ -36,6 +38,33 @@ android {
 }
 
 dependencies {
+    // Core KTX
+    implementation(libs.androidx.core.ktx.v1120)
+
+    // UI
+    implementation(libs.androidx.appcompat.v161)
+    implementation(libs.material.v1110)
+    implementation(libs.androidx.constraintlayout.v214)
+
+    // RecyclerView
+    implementation(libs.androidx.recyclerview)
+
+    // Glide (для загрузки изображений)
+    implementation(libs.glide.v4160)
+    implementation(libs.compiler) // Для Glide аннотаций
+
+    // Lifecycle (опционально)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    // Navigation (опционально)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    // Тестирование
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.v115)
+    androidTestImplementation(libs.androidx.espresso.core.v351)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -45,4 +74,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.glide)
+
 }
